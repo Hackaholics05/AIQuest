@@ -10,7 +10,12 @@ dotenv.config();
 
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
-app.use(cors());
+
+app.use(cors({
+    origin: process.env.CORS_ORIGIN,
+    credentials: true
+}))
+
 
 app.use('/api/questions',require('./routes/QuestionRoute'));
 app.use('/api/answers',require('./routes/AnswerRoute'));

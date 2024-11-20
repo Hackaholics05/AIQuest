@@ -15,11 +15,11 @@ const questionSchema = new mongoose.Schema({
     }],
     createdat:{
         type:Date,  
-        default:Date.now
+        default:Date.now()
     },
     updatedat:{
         type:Date,  
-        default:Date.now
+        default:Date.now()
     },
     author:{
         type:mongoose.Schema.Types.ObjectId,
@@ -38,8 +38,14 @@ const questionSchema = new mongoose.Schema({
         type:mongoose.Schema.Types.ObjectId,
         ref:'Answer',
         default:[]
-    }]
-    
+    }],
+    image:[
+        {
+            type:String,
+            default:[]
+        },
+        
+    ]
 })
 
 const QuestionModel = mongoose.model("Question",questionSchema);

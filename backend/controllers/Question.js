@@ -1,6 +1,5 @@
 const QuestionModel = require('../models/index');
 const UserModel = require('../models/index');
-const AnswerModel = require('../models/index');
 
 export const getallquestions= async( req,res)=>{
 
@@ -8,7 +7,9 @@ export const getallquestions= async( req,res)=>{
         const questions = await QuestionModel.find().populate(UserModel).exec();
 
         if(!questions){
-            throw new Error('Error while Fetching Questions from DB');
+            return res.status(404).json({
+                error:'No questions found'
+            }).end();
         }
 
         res.status(200).json({
@@ -43,7 +44,7 @@ export const postquestion = async(req,res)=>{
         
         res.status(201).json({
             message:'Question Created Successfully',
-
+            question:question._id
         }).end();
 
     }catch(err){
@@ -57,9 +58,11 @@ export const postquestion = async(req,res)=>{
 export const getquestionbyid = async(req,res)=>{
     const id = req.params.id;
     try{
-        const question = await QuestionModel.findById(id).populate(UserModel).exec();
+        const question = await QuestionModel.findById(id).populate("User").exec();
         if(!question){
-            throw new Error('Question not found');
+            return res.status(404).json({
+                error:'Question not found'
+            }).end();
         }
 
         res.status(200).json({
@@ -85,7 +88,7 @@ export const modifyquestion = async(req,res)=>{
             })
         }
 
-        const question = await QuestionModel.findById(id).populate(UserModel).exec();
+        const question = await QuestionModel.findById(id).populate("User").exec();
         if(!question){
             res.status(404).json({
                 error:'Question Not Found'
@@ -109,17 +112,18 @@ export const modifyquestion = async(req,res)=>{
     }
 }
 
-const deletequestion = async(req,res)=>{
+export const deletequestion = async(req,res)=>{
     const id= req.params.id;
     try{
-        const question = await QuestionModel.findById(id).populate(UserModel).exec();
+        const question = await QuestionModel.findById(id).populate("User").exec();
         if(!question){
             res.status(400).json({
                 error:'Question not found'
             });
             return;
         }
-
+        
+       
         await question.remove();
 
         res.status(200).json({
