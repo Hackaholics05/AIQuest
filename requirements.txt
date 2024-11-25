@@ -1,0 +1,7 @@
+wikipedia-api==0.5.4
+sentence-transformers==2.2.2
+faiss-cpu==1.7.4
+transformers==4.33.3
+torch==2.0.1
+numpy==1.24.3
+Flask==2.2.5
