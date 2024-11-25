@@ -111,10 +111,7 @@ We welcome contributions! To contribute:
 
 ---
 
-## **License**  
-This project is licensed under the [MIT License](LICENSE) 
 
----
 
 ## **Contact**  
 For queries, suggestions, or collaborations, please open an issue or contact us at **hackaholics05@gmail.com**.  
