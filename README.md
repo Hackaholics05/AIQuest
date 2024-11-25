@@ -50,7 +50,7 @@
    pip install -r requirements.txt  
    ```  
 
-4. Run the application:  
+4. Run the application:(Currently in improvement stage,to be out in few days)  
    ```bash  
    python main.py  
    ```  
