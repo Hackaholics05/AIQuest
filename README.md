@@ -52,7 +52,8 @@
 
 4. Run the application:(Currently in improvement stage,to be out in few days)  
    ```bash  
-   python main.py  
+   python main.py
+   python wikiImplement.py  
    ```  
 
 5. Access the application at `http://localhost:5000`.  
